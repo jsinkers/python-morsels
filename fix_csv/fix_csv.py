@@ -1,12 +1,9 @@
 import argparse
 import csv
-import sys
 
 
 # python cookbook: 6.1 read/write csv
 # python cookbook: 13.3 parsing command-line options
-# tricky bits: how to pass optional arguments into the function?  I could set default values for the parsed arguments
-
 def fix_csv(in_filename, out_filename, delim=None, quote_char=None):
     """
     fix a csv delimited by pipes (|) to be delimited by commas (,)
@@ -14,14 +11,17 @@ def fix_csv(in_filename, out_filename, delim=None, quote_char=None):
         out_filename: name of output file
 
     """
-    if delim is None:
-        delim = '|'
-
     if quote_char is None:
         quote_char = '"'
 
     with open(in_filename) as in_csv, open(out_filename, 'w') as out_csv:
-        csv_reader = csv.reader(in_csv, delimiter=delim, quotechar=quote_char)
+        if delim is None:
+            dialect = csv.Sniffer().sniff(in_csv.read(1024))
+            in_csv.seek(0)
+            csv_reader = csv.reader(in_csv, dialect=dialect)
+        else:
+            csv_reader = csv.reader(in_csv, delimiter=delim, quotechar=quote_char)
+
         csv_writer = csv.writer(out_csv, delimiter=',', lineterminator='\n')
         for row in csv_reader:
             csv_writer.writerow(row)
