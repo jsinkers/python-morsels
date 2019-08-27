@@ -29,7 +29,7 @@ class TailTests(unittest.TestCase):
         self.assertEqual(tail((1, 2, 3), 3), [1, 2, 3])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_negative_n(self):
         nums = [1, 2, 3, 4]
         self.assertEqual(tail(nums, -1), [])

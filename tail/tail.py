@@ -4,7 +4,7 @@ def tail(seq, n):
     :param seq: sequence
     :param n: number of elements to return
     """
-    if n == 0:
+    if n <= 0:
         return []
 
     return list(seq[-n:])
