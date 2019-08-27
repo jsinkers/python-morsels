@@ -7,4 +7,11 @@ def tail(seq, n):
     if n <= 0:
         return []
 
-    return list(seq[-n:])
+    tail_list = []
+    for item in seq:
+        if len(tail_list) == n:
+            tail_list.pop(0)
+
+        tail_list.append(item)
+
+    return tail_list
