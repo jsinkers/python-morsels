@@ -5,8 +5,9 @@ def deep_flatten(inp):
     ret_list = []
     for i in inp:
         if isinstance(i, Iterable):
-            ret_list += deep_flatten(i)
+            for x in deep_flatten(i):
+                yield x
         else:
-            ret_list.append(i)
+            yield i
 
-    return ret_list
+    #yield ret_list
