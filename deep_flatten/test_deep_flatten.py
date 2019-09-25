@@ -47,7 +47,7 @@ class DeepFlattenTests(unittest.TestCase):
         self.assertEqual(next(deep_flatten(squares)), 9)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_flatten_with_strings(self):
         inputs = [
             ['cats', ['carl', 'cate']],
