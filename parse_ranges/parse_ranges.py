@@ -6,10 +6,14 @@ def parse_ranges(ranges_str):
     """
     ranges = ranges_str.split(',')
     ranges = [r.split('-') for r in ranges]
-    for r1, r2 in ranges:
+    for r in ranges:
+        r1, *r2 = r
         r1 = int(r1)
-        r2 = int(r2)
-        parsed_ranges = range(r1, r2+1)
+        if r2:
+            r2 = int(r2[0])
+            parsed_ranges = range(r1, r2+1)
+        else:
+            parsed_ranges = [r1]
         for pr in parsed_ranges:
             yield pr
 
