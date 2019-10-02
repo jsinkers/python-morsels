@@ -9,7 +9,7 @@ def parse_ranges(ranges_str):
     for r in ranges:
         r1, *r2 = r
         r1 = int(r1)
-        if r2:
+        if r2 and '>' not in r2[0]:
             r2 = int(r2[0])
             parsed_ranges = range(r1, r2+1)
         else:
