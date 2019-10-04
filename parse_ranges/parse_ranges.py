@@ -14,6 +14,6 @@ def parse_ranges(ranges_str):
             parsed_ranges = range(r1, r2+1)
         else:
             parsed_ranges = [r1]
-        for pr in parsed_ranges:
-            yield pr
+
+        yield from parsed_ranges
 
