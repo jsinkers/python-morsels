@@ -2,7 +2,7 @@ from contextlib import contextmanager
 
 
 @contextmanager
-def suppress(error):
+def suppress(*error):
     try:
         yield
     except error:
