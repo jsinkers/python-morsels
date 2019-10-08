@@ -9,7 +9,10 @@ class suppress(ContextDecorator):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        if exc_type in self.err:
-            return True
-        else:
-            return False
+        if exc_type:
+            print(f"exc_type: {exc_type}, exc_val: {exc_val}")
+            suppress_exc = [issubclass(exc_type, err) for err in self.err]
+            if True in suppress_exc:
+                return {"exception": exc_type, "traceback": exc_tb}
+
+        return False
