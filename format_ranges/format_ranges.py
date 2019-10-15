@@ -15,6 +15,8 @@ class PrintRange:
 
 def format_ranges(nums):
     r = []
+    nums = sorted(nums)
+
     for i, num in enumerate(nums):
         if i:
             if num == r[-1].stop + 1:

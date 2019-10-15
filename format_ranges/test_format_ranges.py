@@ -36,7 +36,7 @@ class FormatRangesTests(unittest.TestCase):
         self.assertEqual(format_ranges([1, 10, 11, 12, 13, 14]), '1,10-14')
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_unordered_numbers(self):
         self.assertEqual(format_ranges([10, 20, 12, 3, 11]), '3,10-12,20')
 
