@@ -29,7 +29,7 @@ class FormatRangesTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_lone_numbers(self):
         self.assertEqual(format_ranges([1]), '1')
         self.assertEqual(format_ranges([4, 16, 18]), '4,16,18')

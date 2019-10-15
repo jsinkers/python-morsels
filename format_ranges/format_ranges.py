@@ -7,7 +7,10 @@ class PrintRange:
     stop: int
 
     def __str__(self):
-        return f"{self.start}-{self.stop}"
+        if self.start == self.stop:
+            return f"{self.start}"
+        else:
+            return f"{self.start}-{self.stop}"
 
 
 def format_ranges(nums):
