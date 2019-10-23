@@ -24,19 +24,26 @@ class OrderedSet:
     def __len__(self):
         return len(self.items)
 
-
     def add(self, item):
         if item not in self.set_items:
             self.items.append(item)
             self.set_items.add(item)
-            #self.set_items()
 
     def discard(self, item):
-        self.items.remove(item)
-        self.set_items.discard(item)
+        if item in self:
+            self.items.remove(item)
+            self.set_items.discard(item)
 
     def __eq__(self, other):
-        pass
+        if isinstance(other, OrderedSet):
+            if self.items == other.items:
+                return True
+        elif isinstance(other, set):
+            if self.set_items == other:
+                return True
+
+        return False
+
 
     def __repr__(self):
         return str(self.items)
