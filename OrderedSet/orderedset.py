@@ -7,20 +7,9 @@ class OrderedSet:
                 self.items.append(item)
                 self.set_items.add(item)
 
-        #self.items = items
-        #self.set_items = set(items)
-
     def __contains__(self, item):
         return item in self.set_items
 
-    #@property
-    #def items(self):
-    #    return self._items
-
-    #@items.setter
-    #def items(self, item):
-    #    self._items.append(self.items)
-    #    self.set_items = set(self.items)
     def __len__(self):
         return len(self.items)
 
@@ -44,10 +33,12 @@ class OrderedSet:
 
         return False
 
-
     def __repr__(self):
         return str(self.items)
 
     def __iter__(self):
         for item in self.items:
             yield item
+
+    def __getitem__(self, item):
+        return self.items[item]
