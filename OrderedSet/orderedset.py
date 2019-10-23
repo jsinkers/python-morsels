@@ -1,12 +1,14 @@
 class OrderedSet:
     def __init__(self, items):
         self.items = []
+        self.set_items = set(self.items)
         for item in items:
-            if item not in self.items:
+            if item not in self:
                 self.items.append(item)
+                self.set_items.add(item)
 
         #self.items = items
-        self.set_items = set(items)
+        #self.set_items = set(items)
 
     def __contains__(self, item):
         return item in self.set_items
@@ -29,11 +31,16 @@ class OrderedSet:
             self.set_items.add(item)
             #self.set_items()
 
-    def discard(self):
-        pass
+    def discard(self, item):
+        self.items.remove(item)
+        self.set_items.discard(item)
 
     def __eq__(self, other):
         pass
 
     def __repr__(self):
         return str(self.items)
+
+    def __iter__(self):
+        for item in self.items:
+            yield item
