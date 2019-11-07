@@ -1,3 +1,6 @@
+import math
+
+
 class float_range2:
     def __init__(self, start, stop=None, step=1):
         if stop is None:
@@ -15,6 +18,17 @@ class float_range2:
         while self.is_in_range():
             yield self.val
             self.val += self.step
+
+    def __len__(self):
+        delta = self.stop - self.start
+        if delta*self.step < 0:
+            return 0
+
+        if delta % self.step == 0:
+            return math.floor(delta/self.step)
+        else:
+            return math.floor(delta/self.step) + 1
+
 
     def is_in_range(self):
         if self.step < 0:
