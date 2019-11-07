@@ -1,23 +1,23 @@
-def float_range2(start, stop=None, step=1):
-    def is_in_range(val):
-        if step < 0:
-            return val > stop
-        elif step > 0:
-            return val < stop
+class float_range2:
+    def __init__(self, start, stop=None, step=1):
+        if stop is None:
+            start, stop = 0, start
 
-    if stop is None:
-        start, stop = 0, start
+        if step == 0:
+            raise ValueError
 
-    if step == 0:
-        raise ValueError
+        self.start = start
+        self.stop = stop
+        self.step = step
+        self.val = start
 
-    val = start
-    while is_in_range(val):
-        yield val
-        val += step
+    def __iter__(self):
+        while self.is_in_range():
+            yield self.val
+            self.val += self.step
 
-
-def test(*args):
-    print(len(args))
-    for arg in args:
-        print(arg)
+    def is_in_range(self):
+        if self.step < 0:
+            return self.val > self.stop
+        elif self.step > 0:
+            return self.val < self.stop
