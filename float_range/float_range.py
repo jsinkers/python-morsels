@@ -45,3 +45,22 @@ class float_range2:
             return self.val > self.stop
         elif self.step > 0:
             return self.val < self.stop
+
+    def __eq__(self, other):
+        if isinstance(other, (float_range2, range)):
+            try:
+                if len(self) != len(other):
+                    return False
+            except TypeError:
+                return False
+
+            for item_self, item_other in zip(self, other):
+                if item_self != item_other:
+                    return False
+
+            return True
+        else:
+            return NotImplemented
+
+    def __ne__(self, other):
+        return not (self == other)

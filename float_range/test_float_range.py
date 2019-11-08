@@ -102,7 +102,7 @@ class FloatRangeTests(unittest.TestCase):
         big_num = 1000000
         self.assertEqual(next(reversed(float_range2(big_num))), big_num-1)
 
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_equality(self):
         self.assertEqual(float_range2(0, 5, 0.5), float_range2(0, 5, 0.5))
         self.assertEqual(float_range2(5, 5), float_range2(10, 10))
