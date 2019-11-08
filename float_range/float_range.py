@@ -29,6 +29,16 @@ class float_range2:
         else:
             return math.floor(delta/self.step) + 1
 
+    def __reversed__(self):
+        self.val = (len(self)-1)*self.step + self.start
+        if self.step > 0:
+            while self.val >= self.start:
+                yield self.val
+                self.val -= self.step
+        elif self.step < 0:
+            while self.val <= self.stop:
+                yield self.val
+                self.val -= self.step
 
     def is_in_range(self):
         if self.step < 0:
