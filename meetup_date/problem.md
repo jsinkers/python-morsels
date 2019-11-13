@@ -68,6 +68,14 @@ PyLadies 2018-07-11
 SDHN 2010-06-25
 </code></pre>
 
+## Hints
+<ul>
+<li><a href="https://pymotw.com/3/datetime/index.html#timedeltas" title="timedelta objects can be added to datetime objects to shift a date by N days">Class for date arithmetic in Python</a></li>
+<li><a href="https://pymotw.com/3/calendar/#calculating-dates" title="You can compute a recurring monthly event with the calendar module">Another technique to calculate a recurring date</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions" title="You can make function arguments optional by providing a default value">Optional function arguments</a></li>
+<li><a href="https://docs.python.org/3/library/enum.html#module-enum" title="That Weekday class is a great example of when enums are used in Python">Avoiding magic numbers for <code>Weekday</code></a></li>
+</ul>
+
 <p>Automated tests for this week's exercise <a href="https://www.pythonmorsels.com/exercises/a8ce6ad2f64c4804acd52f9a2de464e8/tests/">can be found here</a>.
 You'll need to write your function in a module named meetup_date.py next to the test file.
 To run the tests you'll run "python test_meetup_date.py" and check the output for "OK".
