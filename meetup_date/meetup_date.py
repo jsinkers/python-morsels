@@ -1,17 +1,14 @@
 import datetime as dt
 
-meet_day = 3 # thursday
-meet_week = 4
 
-
-def meetup_date(year, month):
+def meetup_date(year, month, nth=4, weekday=3):
     day = dt.date(year=year, month=month, day=1)
     week = 0
     while day.month == month:
-        if day.weekday() == meet_day:
+        if day.weekday() == weekday:
             week += 1
 
-        if week == meet_week:
+        if week == nth:
             break
 
         day += dt.timedelta(days=1)
