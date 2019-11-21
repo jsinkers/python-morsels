@@ -1,15 +1,18 @@
 class PermaDict(dict):
+    def __init__(self, *args, silent=False, **kwargs):
+        dict.__init__(self, *args, **kwargs)
+        self.silent = silent
+
     def update(self, E=None, **F):
         if isinstance(E, dict):
             if set(E.keys()).intersection(self.keys()):
-                raise KeyError
+                self.update_existing()
             else:
                 dict.update(self, E, **F)
         elif isinstance(E, list):
             for ind, (key, val) in enumerate(E):
                 if key in self.keys():
-                    print(key)
-                    raise KeyError
+                    self.update_existing()
                 else:
                     dict.update(self, {key: val}, **F)
         elif E is not None:
@@ -18,11 +21,11 @@ class PermaDict(dict):
             dict.update(self, **F)
 
     def __setitem__(self, *args, **kwargs):
-        for arg in args:
-            if arg in self.keys():
-                raise KeyError
-
-        dict.__setitem__(self, *args, **kwargs)
+        key, val = args
+        if key in self.keys():
+            self.update_existing()
+        else:
+            dict.__setitem__(self, *args, **kwargs)
 
     def force_set(self, *args):
         if len(args) == 1 and isinstance(args, dict):
@@ -33,3 +36,6 @@ class PermaDict(dict):
         else:
             raise TypeError
 
+    def update_existing(self):
+        if not self.silent:
+            raise KeyError

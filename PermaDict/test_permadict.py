@@ -71,7 +71,7 @@ class PermaDictTests(unittest.TestCase):
         self.assertEqual(d, {1: 2, 3: 6, 5: 6})
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_silent_flag_to_initializer(self):
         d = PermaDict({1: 2, 3: 4}, silent=True)
         d.update([(5, 6), (1, 8), (7, 8)])
