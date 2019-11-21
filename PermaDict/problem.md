@@ -54,6 +54,7 @@ KeyError: "'Asheesh' already in dictionary."
 {'David': 'Boston', 'Asheesh': 'Boston'}
 </code></pre>
 
+## Bonus 1
 <p>For the first bonus, I'd like you to add a force_set method to your PermaDict
 class which allows keys to be updated without error. ✔️</p>
 <pre><code>&gt;&gt;&gt; locations = PermaDict({'David': "Boston"})
@@ -64,6 +65,7 @@ class which allows keys to be updated without error. ✔️</p>
 {'David': 'Amsterdam', 'Asheesh': 'San Francisco'}
 </code></pre>
 
+## Bonus 2
 <p>For the second bonus, I'd like you to handle an optional "silent" keyword
 argument passed to the initializer of your dictionary to allow your dictionary
 to silently ignore updates to existing keys. ✔️</p>
@@ -73,6 +75,7 @@ to silently ignore updates to existing keys. ✔️</p>
 {'David': 'Boston', 'Asheesh': 'Boston'}
 </code></pre>
 
+## Bonus 3
 <p>For the third bonus, I'd like your PermaDict class's update method to handle
 an optional "force" keyword argument to allow your dictionary's update method
 to force update the values for existing keys. ✔️</p>
