@@ -3,13 +3,13 @@ class PermaDict(dict):
         dict.__init__(self, *args, **kwargs)
         self.silent = silent
 
-    def update(self, E=None, **F):
-        if isinstance(E, dict):
+    def update(self, E=None, force=False, **F):
+        if not force and isinstance(E, dict):
             if set(E.keys()).intersection(self.keys()):
                 self.update_existing()
             else:
                 dict.update(self, E, **F)
-        elif isinstance(E, list):
+        elif not force and isinstance(E, list):
             for ind, (key, val) in enumerate(E):
                 if key in self.keys():
                     self.update_existing()
