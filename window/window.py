@@ -1,7 +1,7 @@
 from collections import deque
 
 
-def window(items, n):
+def window(items, n, *, fillvalue=None):
     if n == 0:
         return []
 
@@ -14,6 +14,6 @@ def window(items, n):
 
     if n > len(d):
         for i in range(n-len(d)):
-            d.append(None)
+            d.append(fillvalue)
 
         yield tuple(d)

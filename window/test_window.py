@@ -61,7 +61,7 @@ class WindowTests(unittest.TestCase):
         self.assertIterableEqual(window([1, 2, 3], 4), [(1, 2, 3, None)])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_fillvalue_as_keyword_argument_only(self):
         """Test can be called with fillvalue (but only as keyword arg)."""
         inputs = [1, 2, 3]
