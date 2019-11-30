@@ -6,9 +6,14 @@ def window(items, n):
         return []
 
     d = deque([], maxlen=n)
-    windows = []
+
     for ind, item in enumerate(items):
         d.append(item)
         if len(d) == n:
             yield tuple(d)
 
+    if n > len(d):
+        for i in range(n-len(d)):
+            d.append(None)
+
+        yield tuple(d)

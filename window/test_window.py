@@ -54,7 +54,7 @@ class WindowTests(unittest.TestCase):
         self.assertEqual(list(iterable), [(4, 16), (16, 25)])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_window_size_larger_than_iterable(self):
         self.assertIterableEqual(window([], 1), [(None,)])
         self.assertIterableEqual(window([1, 2], 3), [(1, 2, None,)])
