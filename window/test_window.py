@@ -44,7 +44,7 @@ class WindowTests(unittest.TestCase):
         self.assertIterableEqual(window(inputs, 2), outputs)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_returns_lazy_iterable(self):
         inputs = (n**2 for n in [1, 2, 3, 4, 5])
         iterable = window(inputs, 2)
