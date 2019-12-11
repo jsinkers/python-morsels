@@ -14,9 +14,9 @@ class Tag:
         self.attrs = {}
 
         for attr in attrs:
-            #print(attr)
             key, value = attr.split("=")
-            self.attrs[key.lower()] = value.lower()
+            if key.lower() not in self.attrs.keys():
+                self.attrs[key.lower()] = value.lower()
 
     def __eq__(self, other):
         if self.name != other.name:
