@@ -1,3 +1,5 @@
+import shlex
+
 def tags_equal(*tags):
     tag1, tag2 = [Tag(tag) for tag in tags]
     return tag1 == tag2
@@ -9,7 +11,7 @@ class Tag:
         tag = tag[1:-1]
 
         # split into name, attributes
-        name, *attrs = tag.split(" ")
+        name, *attrs = shlex.split(tag)
         self.name = name.lower()
         self.attrs = {}
 
