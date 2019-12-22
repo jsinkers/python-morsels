@@ -64,7 +64,7 @@ class NormalizeSentencesTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_with_abbreviations_and_numbers(self):
         sentences = "P.S. I like fish (e.g. salmon). That is all."
         expected = "P.S. I like fish (e.g. salmon).  That is all."

@@ -2,8 +2,8 @@ import re
 
 
 def normalize_sentences(sentence):
-    patt = "[\.\?\!]( {1})(?! )"
-    return re.sub(patt, end_sentence_repl, sentence)
+    patt = "([^.].[.?!] )(?! )"
+    return re.sub(patt, r"\1 ", sentence)
 
 
 def end_sentence_repl(matchobj):
