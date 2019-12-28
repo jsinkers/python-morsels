@@ -1,11 +1,12 @@
-# @record_calls
-# def function()
-def record_calls(func):
-    def func_wrapper(func):
-        try:
-            func.call_count += 1
-        except AttributeError:
-            func.call_count = 0
-        return func
+from functools import wraps
 
-    return func_wrapper(func)
+
+def record_calls(func):
+    @wraps(func)
+    def func_wrapper(*args, **kwargs):
+        func_wrapper.call_count += 1
+        print(f"call count: {func_wrapper.call_count}")
+        return func(*args, **kwargs)
+
+    func_wrapper.call_count = 0
+    return func_wrapper
