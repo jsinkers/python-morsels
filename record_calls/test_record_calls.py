@@ -77,7 +77,7 @@ class RecordCallsTests(unittest.TestCase):
         self.assertIn('(a, b=True)', documentation)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_record_arguments(self):
         @record_calls
         def my_func(*args, **kwargs): return args, kwargs
