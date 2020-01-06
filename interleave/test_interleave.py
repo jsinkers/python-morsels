@@ -57,7 +57,7 @@ class InterleaveTests(unittest.TestCase):
         self.assertEqual(next(iterator), next(iterator))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_more_than_two_arguments(self):
         in1 = [1, 2, 3]
         in2 = [4, 5, 6]
