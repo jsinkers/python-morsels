@@ -67,7 +67,7 @@ class EasyDictTests(unittest.TestCase):
         self.assertEqual(y.get('d', 5), 5)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_normalize_arg(self):
         d = EasyDict({'greeting 1': 'hi'}, normalize=True)
         self.assertEqual(d['greeting 1'], 'hi')
