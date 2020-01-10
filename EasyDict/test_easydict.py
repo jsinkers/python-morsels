@@ -29,7 +29,7 @@ class EasyDictTests(unittest.TestCase):
         self.assertEqual(mapping, {'a': 2, 'b': 3})
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_allow_setting_keys_and_attributes(self):
         d = EasyDict({'a': 2, 'b': 3})
         d['a'] = 4
@@ -46,7 +46,7 @@ class EasyDictTests(unittest.TestCase):
         self.assertEqual(x.a, 4)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_keyword_arguments_equality_and_get_method(self):
         d = EasyDict(a=2, b=3, c=4, d=5)
         self.assertEqual(d.a, 2)
