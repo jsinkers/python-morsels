@@ -3,12 +3,17 @@ import csv
 import io
 
 
-def condense_csv(text, id_name="id"):
+def condense_csv(text, id_name=None):
     textio = io.StringIO(text)
     reader = csv.reader(textio)
     # reshape input text using defaultdict
     d = defaultdict(dict)
     for id, attr, val in reader:
+        # handle first line as header
+        if id_name is None:
+            id_name = id
+            continue
+
         d[id][id_name] = id
         d[id][attr] = val
 
