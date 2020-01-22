@@ -1,12 +1,14 @@
-def format_fixed_width(cols, padding=2):
+def format_fixed_width(cols, padding=2, widths=None):
     ret_text = ""
     if cols:
         [*x] = zip(*cols)
         # get column widths based on width of maximum entry. exclude last column
-        col_widths = [len(max(y, key=len)) for y in x[:-1]]
+        if widths is None:
+            widths = [len(max(y, key=len)) for y in x[:-1]]
+
         for ind, row in enumerate(cols):
             *entry, last_entry = row
-            for e, w in zip(entry, col_widths):
+            for e, w in zip(entry, widths):
                 # adjust width of column and pad with spaces
                 ret_text += e.ljust(w) + ' '*padding
 
