@@ -9,24 +9,25 @@ def format_fixed_width(cols, padding=2, widths=None, alignments=None):
         if alignments is None:
             alignments = ["L"] * len(x)
 
-        for ind, row in enumerate(cols):
-            entry = row
-            #*entry, last_entry = row
-            for e, w, align in zip(entry, widths, alignments):
-                # adjust width of column and pad with spaces
-                if align == 'L':
-                    ret_text += e.ljust(w) + ' ' * padding
-                elif align == 'R':
-                    ret_text += e.rjust(w) + ' ' * padding
+        ret_text = []
+        for row in cols:
+            new_row = [justify(e, a, w) for e, w, a in zip(row, widths, alignments)]
+            pad = ' ' * padding
+            new_row = pad.join(new_row)
+            new_row = new_row.rstrip()
+            ret_text.append(new_row)
 
-            # append last item of row without padding
-            #ret_text += last_entry
-            ret_text = ret_text.rstrip()
-
-            # add a newline character, except for last line
-            if ind < len(cols) - 1:
-                ret_text += "\n"
+        ret_text = '\n'.join(ret_text)
 
     return ret_text
 
 
+def justify(text, align, width):
+    if align == "L":
+        ret_text = text.ljust(width)
+    elif align == "R":
+        ret_text = text.rjust(width)
+    else:
+        raise ValueError
+
+    return ret_text
