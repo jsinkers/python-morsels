@@ -1,7 +1,4 @@
-pad = 2
-
-
-def format_fixed_width(cols):
+def format_fixed_width(cols, padding=2):
     ret_text = ""
     if cols:
         [*x] = zip(*cols)
@@ -11,7 +8,7 @@ def format_fixed_width(cols):
             *entry, last_entry = row
             for e, w in zip(entry, col_widths):
                 # adjust width of column and pad with spaces
-                ret_text += e.ljust(w) + ' '*pad
+                ret_text += e.ljust(w) + ' '*padding
 
             # append last item of row without padding
             ret_text += last_entry
