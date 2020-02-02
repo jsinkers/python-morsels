@@ -125,7 +125,7 @@ class SortByColumnTests(unittest.TestCase):
         self.assertEqual(expected.splitlines(), output.splitlines())
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_with_header(self):
         contents = dedent("""
             Track,Artist,Title
