@@ -30,8 +30,19 @@ def sort_by_column(input_csv, sort_inp, with_header=None):
         for row in csv_reader:
             csv_rows.append(row)
 
+    def sort_key(row):
+        """ helper function to determine sort key.  intended to improve readability over lambda function """
+        sort_list = []
+        # build up a sort list with specified columns, cast to the specified comparison type for that column
+        for sort_info in sort_cols:
+            cast = sort_info['type']
+            col = sort_info['col']
+            sort_list.append(cast(row[col]))
+
+        return sort_list
+
     # apply a sort for multiple columns, using the specified type-casting
-    csv_rows = sorted(csv_rows, key=lambda x: [sort_info["type"](x[sort_info['col']]) for sort_info in sort_cols])
+    csv_rows = sorted(csv_rows, key=sort_key)
     for row in csv_rows:
         csv_writer.writerow(row)
 
