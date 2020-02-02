@@ -104,7 +104,7 @@ class SortByColumnTests(unittest.TestCase):
         self.assertEqual(expected.splitlines(), output.splitlines())
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
+    #@unittest.expectedFailure
     def test_sort_by_multiple_columns(self):
         contents = dedent("""
             2005,Lexus,LFA

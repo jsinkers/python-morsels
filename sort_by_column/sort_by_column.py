@@ -1,36 +1,30 @@
 import argparse
 import csv
-import io
 import sys
 
 
-def sort_by_column(input_csv, sort_col):
-    sort_col = int(sort_col)
+def sort_by_column(input_csv, sort_cols):
+    sort_cols = [int(i) for i in sort_cols]
     with open(input_csv, 'r') as f:
         csv_reader = csv.reader(f)
         csv_rows = []
         for row in csv_reader:
             csv_rows.append(row)
 
-    csv_rows = sorted(csv_rows, key=lambda x: x[sort_col])
-    #ret_text_io = io.StringIO()
-    #csv_writer = csv.writer(ret_text_io)
+    csv_rows = sorted(csv_rows, key=lambda x: [x[i] for i in sort_cols])
     csv_writer = csv.writer(sys.stdout)
     for row in csv_rows:
-        #print(row)
         csv_writer.writerow(row)
-
-    #return ret_text_io.getvalue()
 
 
 if __name__ == '__main__':
     # set up arg parser
     parser = argparse.ArgumentParser(description='Sort input csv by specified column number')
     parser.add_argument(dest='input_csv', metavar='input_csv')
-    parser.add_argument(dest='sort_col', metavar='sort_col')
+    parser.add_argument(dest='sort_cols', metavar='sort_cols', nargs='+')
     #parser.add_argument('--in-delimiter', dest='in_delim', metavar='input delimiter', default=None)
     #parser.add_argument('--in-quote', dest='in_quote', metavar='quote character', default=None)
 
     args = parser.parse_args()
-    sort_by_column(args.input_csv, args.sort_col)
+    sort_by_column(args.input_csv, args.sort_cols)
 
